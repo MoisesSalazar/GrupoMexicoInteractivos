@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Incluye jQuery desde el CDN -->
+    <!-- Agrega el enlace a Bootstrap Icons CDN en el encabezado de tu HTML -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Incluye tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <!-- Contenido de tu página -->
+    <div class="container-fluid d-flex justify-content-center align-items-center" style=" min-height: 100vh;">
+        <div id="main" class="px-2 text-center ">
+            <h3 id="title-theme" class="mt-4 mb-2">​</h3>
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6 d-flex justify-content-center align-items-center"
+                    id="content">
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="d-flex justify-content-center align-items-center mobile">
+                        <img src="imagen/Amacice Múltiple.png" alt="" class="img-fluid border-2 modal-img">
+                        <!-- Contenido de la columna derecha, por ejemplo, una imagen -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Carga al Inicio -->
+    <div class="modal fade" id="cargaModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p>La página se está cargando. Por favor, espera...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje de rotación oculto inicialmente -->
+    <div id="rotateInstruction" class="rotate-instruction" style="display: none;">
+        <div class="rotate-text">
+            Por favor, gire su dispositivo a la vista horizontal.
+        </div>
+        <div class="rotate-icon rotate-icon-animation">&#8635;</div>
+    </div>
+
+    <!-- Modal de Bienvenida -->
+    
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"
+        style="border: transparent" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content " style="background-color: transparent; border: solid 0px transparent;">
+                <!-- <div class="modal-header text-center d-flex justify-content-center align-items-center">
+                <h4 class="modal-title text-center" id="modalLabel"></h4>
+            </div> -->
+                <div class="row d-flex justify-content-center modal-body text-center fw-bold text-white fs-2"
+                    onclick="reproducirFirst()" data-dismiss="modal" style="border: transparent;">
+                    <div class="text-center d-flex align-items-center justify-content-center"
+                        style="width: 200px; background-color: red; border-radius: 25px; height: 60px;" type="button">
+                        Comenzar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal de Fin de Inducción -->
+    <!-- <div class="modal fade" id="finInduccionModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalLabel">¡Fin de la Inducción!</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Has completado la inducción. ¿Deseas continuar?</p>
+                </div>
+                <div class="text-center mb-3">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                        onclick="continuarInduccion()">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-primary" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-content-rounded">
+            <div class="modal-content">
+                <div class="modal-body" id="modal-body">
+                    <p class="fw-bold desvanecer-medio text-center">
+                        <span id="title-modal"></span>
+                        <span class="fw-bold text-center" id="title-secondary-modal"></span>
+                    </p>
+                    <div class="d-flex justify-content-center align-items-center mobile flip-container">
+                        <!-- Contenedor para imagen y texto -->
+                        <div class="flip-content">
+                            <!-- Contenido de la cara frontal (imagen) -->
+                            <div class="flip-front d-flex justify-content-center align-items-center">
+                                <img src="" id="img-modal" alt="Imagen 1" class="img-fluid border-2 modal-img">
+                            </div>
+                            <!-- Contenido de la cara trasera (texto) -->
+                            <div class="flip-back d-flex justify-content-center align-items-center">
+                                <p id="text-modal" class="text-justify">Cargando Texto ...</p>
+                            </div>
+                            <!-- Botón con ícono para activar el efecto flip -->
+                        </div>
+                    </div>
+                    <div class=" icon-text text-center mt-3">
+                        <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center"
+                            id="flipButton">
+                            <i class="fa-solid fa-text-height"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Nuevo botón de cierre en la esquina superior derecha -->
+                <button type="button" class="btn btn-close-custom" data-bs-dismiss="modal" aria-label="Close"
+                    onclick="finalizar()">
+                    <img src="imagen/x.svg" alt="Cerrar" class="svg-icon">
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <audio id="miAudio" src="" preload="auto"></audio>
+
+    <!-- Incluye tu archivo JavaScript personalizado -->
+    <script src="script.js"></script>
+</body>
+
+</html>
