@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Página</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <!-- Agrega el enlace a Bootstrap Icons CDN en el encabezado de tu HTML -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Incluye jQuery desde el CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Incluye tu archivo CSS personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Contenido de tu página -->
+    <div class="black-background d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="container">
+            <div class="row">
+                <h3 id="title-theme" class="mt-4 text-center text-bold mb-3"></h3>
+
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="flip-container mobile">
+                        <div class="flip-content">
+                            <div class="flip-front d-flex justify-content-center align-items-center ">
+                                <img src="imagen/img03.png" alt="" id="img-content"
+                                    class="img-fluid border-2 modal-img">
+                            </div>
+                            <div class="flip-back d-flex justify-content-center align-items-center">
+                                <p id="text-content" class="text-justify"></p>
+                            </div>
+                        </div>
+                        <div class="icon-text text-center mt-3">
+                            <button type="button"
+                                class="btn btn-primary d-flex justify-content-center align-items-center"
+                                id="flipButton">
+                                <i class="fa-solid fa-text-height"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center align-items-center mt-3" id="content">
+                        <div class="row col-12 d-flex justify-content-center align-self-center gap-3"
+                            id="miniatura-content">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Carga al Inicio -->
+    <div class="modal fade" id="cargaModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+        aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <p>La página se está cargando. Por favor, espera...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje de rotación oculto inicialmente -->
+    <div id="rotateInstruction" class="rotate-instruction" style="display: none;">
+        <div class="rotate-text">
+            Por favor, gire su dispositivo a la vista horizontal.
+        </div>
+        <div class="rotate-icon rotate-icon-animation">&#8635;</div>
+    </div>
+
+    <!-- Modal de Bienvenida -->
+    <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true"
+        style="border: transparent" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content " style="background-color: transparent; border: solid 0px transparent;">
+                <!-- <div class="modal-header text-center d-flex justify-content-center align-items-center">
+            <h4 class="modal-title text-center" id="modalLabel"></h4>
+        </div> -->
+                <div class="row d-flex justify-content-center modal-body text-center fw-bold text-white fs-2"
+                    onclick="reproducirFirst()" data-dismiss="modal" style="border: transparent;">
+                    <div class="text-center d-flex align-items-center justify-content-center"
+                        style="width: 200px; background-color: red; border-radius: 25px; height: 60px;" type="button">
+                        Comenzar</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="miAudio" src="" preload="auto"></audio>
+
+
+    <!-- Incluye tu archivo JavaScript personalizado -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Al hacer clic en el botón personalizado "Previous"
+            $("#custom-carousel-buttons .carousel-control-prev").click(function () {
+                $("#carouselExampleCaptions").carousel("prev");
+            });
+
+            // Al hacer clic en el botón personalizado "Next"
+            $("#custom-carousel-buttons .carousel-control-next").click(function () {
+                $("#carouselExampleCaptions").carousel("next");
+            });
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
